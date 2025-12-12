@@ -1,7 +1,6 @@
 name: actionlint
 title: actionlint
 base: core24
-version: 1.7.9
 summary: An extremely fast Python package installer and resolver, written in Rust.
 description: |
   actionlint is a static checker for GitHub Actions workflow files. Try it online!
@@ -44,7 +43,6 @@ parts:
   actionlint:
     plugin: go
     source: https://github.com/rhysd/actionlint.git
-    source-tag: v$SNAPCRAFT_PROJECT_VERSION
     build-snaps:
       - go
 apps:
