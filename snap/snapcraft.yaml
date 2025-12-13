@@ -16,6 +16,7 @@ description: |
   - Other several useful checks; glob syntax validation, dependencies check for needs:, runner label validation, cron syntax validation, ...
 
 
+adopt-info: actionlint
 grade: stable
 confinement: strict
 
@@ -45,6 +46,11 @@ parts:
     source: https://github.com/rhysd/actionlint.git
     build-snaps:
       - go
+    override-build: |
+      # Workaround for https://github.com/canonical/craft-parts/issues/1416
+      sed -i 's/installedFrom = "installed by building from source"/installedFrom = "installed from the snap store edge channel"/' command.go
+      craftctl default
+      craftctl set "version=$(git describe --tags)"
 apps:
   actionlint:
     command: bin/actionlint
