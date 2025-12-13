@@ -47,6 +47,10 @@ parts:
     source-tag: v$SNAPCRAFT_PROJECT_VERSION
     build-snaps:
       - go
+    override-build: |
+      # Workaround for https://github.com/canonical/craft-parts/issues/1416
+      sed -i 's/installedFrom = "installed by building from source"/installedFrom = "installed from the snap store"/' command.go
+      craftctl default
 apps:
   actionlint:
     command: bin/actionlint
