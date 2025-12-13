@@ -49,8 +49,7 @@ parts:
       - go
     override-build: |
       # Workaround for https://github.com/canonical/craft-parts/issues/1416
-      sed -i 's/installedFrom = "installed by building from source"/installedFrom = "installed from the snap store"/' command.go
-      craftctl default
+      go install -ldflags '-X "github.com/rhysd/actionlint.installedFrom=installed from snap store (edge channel)"' ./...
 apps:
   actionlint:
     command: bin/actionlint
