@@ -1,4 +1,4 @@
-name: Sync to armhf branch
+name: Sync to edge branch
 
 on:
   push:
@@ -12,24 +12,6 @@ permissions:
   contents: write
 
 jobs:
-  sync-armhf:
-    name: 🔄 Sync candidate branch to armhf
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout the source
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
-        ref: candidate-armhf
-    - name: Merge from candidate
-      run: |
-        git pull
-        git config --global user.name "Snapcrafters[bot]"
-        git config --global user.email "bot@bot.bot"
-
-        git merge origin/candidate -m 'chore: merge candidate to candidate-armhf'
-        git push
   sync-edge:
     name: 🔄 Sync candidate branch to edge
     runs-on: ubuntu-latest
@@ -47,22 +29,4 @@ jobs:
         git config --global user.email "bot@bot.bot"
 
         git merge origin/candidate -m 'chore: merge candidate to edge'
-        git push
-  sync-edge-armhf:
-    name: 🔄 Sync candidate branch to edge-armhf
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout the source
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
-        ref: edge-armhf
-    - name: Merge from candidate
-      run: |
-        git pull
-        git config --global user.name "Snapcrafters[bot]"
-        git config --global user.email "bot@bot.bot"
-
-        git merge origin/candidate -m 'chore: merge candidate to edge-armhf'
         git push
