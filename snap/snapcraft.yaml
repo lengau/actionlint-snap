@@ -1,7 +1,7 @@
 name: actionlint
 title: actionlint
 base: core24
-version: 0.12.0
+version: 0.12.1
 summary: Static checker for GitHub Actions workflow files
 description: |
   [actionlint](https://github.com/rhysd/actionlint) is a static checker for
